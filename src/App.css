@@ -1,10 +1,23 @@
-.App {
-  text-align: center;
+body{
+  background-color: #efefef;
+}
+.error{
+  color: red;
+  padding: 5px;
+  text-align: left;
+  width:100%;
+  float: left;
+  display: none;
+}
+input:invalid[focused="true"]{
+  border-color: red;
+}
+input:invalid[focused="true"] ~ .error{
+  display: block !important;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.App {
+  text-align: center;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -36,3 +49,5 @@
     transform: rotate(360deg);
   }
 }
+
+
