@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import SignupForm from './signup/signupForm';
+import Success from './signup/sucess';
 import './App.css';
 
 
@@ -61,9 +62,17 @@ const inputs = [
     required: true
   }
 ]
+const[sucess, setSucess] = useState(false);
 
  const handleSubmit = (e) => {
    e.preventDefault();
+   if(values !== null || values !== ""){
+    setSucess(true);
+     setTimeout(() =>{
+      setSucess(false);
+     }, 3000);
+   
+   }
  }
  
  const changeHandler = (e) => {
@@ -78,15 +87,14 @@ const inputs = [
       <div className="mt-8 bg-white p-6 rounded-lg w-96">
         <h1 className='font-bold'>React Signup Form and Validations</h1>
         <div className="grid">
-          <form onSubmit={handleSubmit}>
+          {sucess ? <Success/> : ""}
+          <form onSubmit={handleSubmit}>           
             {inputs.map((input) => (
               <SignupForm key={input.id} 
               {...input} 
               value={values[input.name]} 
               onChange={changeHandler}
-              />
-              
-              
+              />             
             ))}
             <button className='bg-cyan-600 rounded-md p-2 w-80 text-white mt-8 hover:bg-blue-700'>Submit</button>
         </form>

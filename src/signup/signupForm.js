@@ -26,6 +26,7 @@ const {label, changeHandler, errorMessage, id, value, ...inputProps} = props;
                   {...inputProps} 
                    onBlur={blurHandler} 
                    focused={focused.toString()}
+                   onFocus={() => {inputProps === "confirmPassword" && setFocused(true)}}
                   />
                  <p className="error">{errorMessage}</p>
               </label>
